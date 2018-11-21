@@ -1,1 +1,1 @@
-java -cp CommandLineJava-1.0.0-jar-with-dependencies.jar com.pilotprogrammer.app.Start "$1" "$2" "$PWD"
+java -cp CommandLineJava-1.0.0-jar-with-dependencies.jar com.pilotprogrammer.app.Start $1 $2 -h=$PWD
