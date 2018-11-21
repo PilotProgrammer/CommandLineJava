@@ -1,8 +1,13 @@
 package com.pilotprogrammer.beans;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public abstract class MySuperBean {
-	public void doStuff() {
+	@Value("${commandline.greeting}")
+	protected String middleGreeting;
+
+	public void doStuff(String first, String last) {
 		String className = getClass().toString();
-		System.out.println(String.format("%s is doing stuff!", className));
+		System.out.println(String.format("%s %s %s %s", className, middleGreeting, first, last));
 	}
 }

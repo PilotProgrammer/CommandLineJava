@@ -24,13 +24,13 @@ public class Start {
 
 		Options options = new Options();
 
-		Option input = new Option("i", "input", true, "input file path");
-		input.setRequired(true);
-		options.addOption(input);
+		Option first = new Option("f", "FirstName", true, "Your first name");
+		first.setRequired(true);
+		options.addOption(first);
 
-		Option output = new Option("o", "output", true, "output file");
-		output.setRequired(false);
-		options.addOption(output);
+		Option last = new Option("l", "LastName", true, "Your last name");
+		last.setRequired(false);
+		options.addOption(last);
 
 		CommandLineParser parser = new DefaultParser();
 		HelpFormatter formatter = new HelpFormatter();
@@ -45,11 +45,8 @@ public class Start {
 			System.exit(1);
 		}
 
-		String inputFilePath = cmd.getOptionValue("input");
-		String outputFilePath = cmd.getOptionValue("output");
-
-		System.out.println(inputFilePath);
-		System.out.println(outputFilePath);
+		String firstN = cmd.getOptionValue("FirstName");
+		String lastN = cmd.getOptionValue("LastName");
 		
 		AnnotationConfigApplicationContext ctx = null;
 		try {
@@ -59,13 +56,13 @@ public class Start {
 			ctx.refresh();
 
 			MyAnnotationConfigBean myAnnotationConfigBean = ctx.getBean(MyAnnotationConfigBean.class);
-			myAnnotationConfigBean.doStuff();
+			myAnnotationConfigBean.doStuff(firstN, lastN);
 			
 			MyXmlConfigBean myXmlConfigBean = ctx.getBean(MyXmlConfigBean.class);
-			myXmlConfigBean.doStuff();
+			myXmlConfigBean.doStuff(firstN, lastN);
 			
 			MyComponentScanBean myComponentScanBean = ctx.getBean(MyComponentScanBean.class);
-			myComponentScanBean.doStuff();
+			myComponentScanBean.doStuff(firstN, lastN);
 		} finally {
 			if (ctx != null) {
 				ctx.close();
