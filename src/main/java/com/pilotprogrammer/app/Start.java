@@ -63,13 +63,13 @@ public class Start {
 			ctx.refresh();
 
 			MyAnnotationConfigBean myAnnotationConfigBean = ctx.getBean(MyAnnotationConfigBean.class);
-			myAnnotationConfigBean.doStuff(firstN, lastN);
+			myAnnotationConfigBean.sayHello(firstN, lastN);
 			
 			MyXmlConfigBean myXmlConfigBean = ctx.getBean(MyXmlConfigBean.class);
-			myXmlConfigBean.doStuff(firstN, lastN);
+			myXmlConfigBean.sayHello(firstN, lastN);
 			
 			MyComponentScanBean myComponentScanBean = ctx.getBean(MyComponentScanBean.class);
-			myComponentScanBean.doStuff(firstN, lastN);
+			myComponentScanBean.sayHello(firstN, lastN);
 		} finally {
 			if (ctx != null) {
 				ctx.close();
